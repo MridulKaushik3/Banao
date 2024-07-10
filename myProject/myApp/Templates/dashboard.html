@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+    <style>
+      .dashboard {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+      }
+
+      .profile {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 20px;
+        align-items: center;
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .profile img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+
+      .details {
+        display: grid;
+        gap: 10px;
+      }
+
+      .details p {
+        font-size: 16px;
+        margin: 0;
+      }
+
+      .details strong {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard">
+      <div class="profile">
+        {% if person.profile_image %}
+        <img src="/media/{{ person.profile_image }}" alt="Profile Image" />
+        {% endif %}
+        <div class="details">
+          <p><strong>First Name:</strong> {{ person.first_name }}</p>
+          <p><strong>Last Name:</strong> {{ person.last_name }}</p>
+          <p><strong>Username:</strong> {{ username }}</p>
+          <p><strong>User Type:</strong> {{ user_type }}</p>
+          {% if person.address %}
+          <p><strong>Address:</strong> {{ person.address }}</p>
+          {% endif %}
+          <!-- Add more details as needed -->
+        </div>
+      </div>
+    </div>
+    <div><a href="/login/">Log out</a></div>
+  </body>
+</html>
